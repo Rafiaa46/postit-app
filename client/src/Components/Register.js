@@ -15,14 +15,17 @@ import {
   Form,
 } from "reactstrap";
 import logo from "../Images/logo-t.png";
+import { UseSelector, useSelector } from "react-redux";
 
 const Register = () => {
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSchemaValidation) });
 
+  const userList=useSelector((state)=> state.users.value)
   // Handle form submission
 
   const onSubmit = (data) => {
@@ -75,6 +78,32 @@ const Register = () => {
           </Col>
         </Row>
       </Form>
+      <Row>
+        <Col md={6}>
+          <h1>List of users</h1>
+          <table className="table">
+
+            <tbody>
+
+              {userList.map((user) => (
+
+                <tr key={user.email}>
+
+                  <td>{user.name}</td>
+
+                  <td>{user.email}</td>
+
+                  <td>{user.password}</td>
+
+                </tr>
+
+              ))}
+
+            </tbody>
+
+          </table>
+        </Col>
+      </Row>
     </Container>
   );
 };
