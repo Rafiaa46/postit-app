@@ -6,7 +6,16 @@ const userSlice=createSlice({
     name:"users",
     initialState:initialState,
     reducers:{
+        addUser:(state, action)=>{
+            state.value.push(action.payload);
+
+        },
+
+        deleteUsers:(state,action)=>{},
+        updateUsers:(state,action)=>{},
+
     },
 
 });
+export const {addUser , deleteUsers , updateUsers} = userSlice.actions; //export the functio
 export default userSlice.reducer;
