@@ -11,7 +11,9 @@ const userSlice=createSlice({
 
         },
 
-        deleteUsers:(state,action)=>{},
+        deleteUsers:(state,action)=>{
+            state.value=state.value.filter((user)=>user.email !== action.payload)
+        },
         updateUsers:(state,action)=>{},
 
     },
